@@ -1,12 +1,9 @@
-import tkinter as tk
+from tkinter import *
 
-window = tk.Tk()
-window.title("Hello world")
-window.geometry("300x300")
-
-hello = tk.Label(text="Hello world!")
-hello.pack()
-button = tk.Button(text="Click me!")
-button.pack()
-
-tk.mainloop()
+root=Tk()
+bg = PhotoImage(file="MAP.png")
+bglabel=Label(root, image=bg)
+bglabel.place(x=0, y=0)
+root.title("geography quiz")
+root.geometry( "750x500" )
+root.mainloop()
