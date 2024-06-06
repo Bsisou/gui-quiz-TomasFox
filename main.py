@@ -1,60 +1,54 @@
 from tkinter import *
-
 from PIL import Image, ImageTk
 
-class background(Frame):
-    def __init__(self, master, *pargs):
-        Frame.__init__(self, master, *pargs)
+
+names=[]
+
+#this is the class for my first page#
+class Startpage:
+    def __init__(self, app):
+    
+        self.heading=Label(app, text="Welcome to the quiz",background="#e1d9bb", font=("comfortaa", 40))
+        self.heading.place(x=100, y=10)
+        self.label_username= Label(app, text="Enter your name: ", background="#e1d9bb", font=("arial", 18))
+        self.label_username.place(x=250, y=200)
+        self.name=Entry(app)
+        self.name.place(x=285, y=245)
+        #this is the button to continue to second page#
+        self.continuebtn=Button(app, text="Continue", font=("arial", 20), background="#9ED5A8", command=self.Continue)
+        self.continuebtn.place(x=280, y=380)
+    def Continue(self):
+        username=self.name.get()
+        names.append(username)
+        app.destroy()
 
 
-
-        self.image = Image.open("MAP.png")
-        self.img_copy= self.image.copy()
-
-
-        self.background_image = ImageTk.PhotoImage(self.image)
-
-        self.background = Label(self, image=self.background_image)
-        self.background.pack(fill=BOTH, expand=YES)
-        self.background.bind('<Configure>', self._resize_image)
-
-    def _resize_image(self,event):
-
-        new_width = event.width
-        new_height = event.height
-
-        self.image = self.img_copy.resize((new_width, new_height))
-
-        self.background_image = ImageTk.PhotoImage(self.image)
-        self.background.configure(image =  self.background_image)
-
-class startpage(Frame):
-    def __init__(self, master, *pargs):
-        Frame.__init__(self, master, *pargs)
-
-        self.background = background(self)
-        self.startframe=Frame(app, self.background, padx=100, pady=100)
-        self.startframe.grid()
-        self.label = Label(self, text="Welcome to the game")
-        self.label.pack()
-
-        self.button = Button(self, text="Start", command=self.start)
-        self.button.pack()
-
-    def start(self):
-        self.background.destroy()
-        self.label.destroy()
-        self.button.destroy()
-        self.new_window = Tk()
-        self.app = Game(self.new_window)
-        self.app.pack()
-        self.new_window.mainloop()
-
-
+        
+        
+        
+#this is my main window
 app = Tk()
 app.title("Geography quiz")
-app.geometry("900x600")
-app.configure(background="black")
-start=startpage(app)
-start.place(x=0, y=0, width=900, height=600)
+app.geometry("750x500")
+#this is my background image#
+bg = PhotoImage(file="MAP.png")
+bglabel=Label(app, image=bg)
+bglabel.place(x=0, y=0)
+Startpage(app)
 app.mainloop()
+
+
+class Questions:
+    def __init__()
+
+
+
+Quiz = Tk()
+Quiz.title("Geography quiz")
+Quiz.geometry("750x500")
+#this is my background image#
+bg = PhotoImage(file="MAP.png")
+bglabel=Label(Quiz, image=bg)
+bglabel.place(x=0, y=0)
+
+Quiz.mainloop()
